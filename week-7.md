@@ -1,0 +1,9 @@
+# Week 7 update
+
+- I had a detailed discussion with Fredrik about my project proposal. He was mostly on board with it. Apart from my ideas, he also asked to explore how the current coding assistants work e.g. Cline or Cursor. I did a research on how Claude code works. The most interesting part was it doesn't do any fancy embedding but still manages to form a good mental model of the codebase with just search tools like grep and find. It is not fuly clear if they do something else as well or simply rely on a large context window. 
+
+- I also wrote embedding code for a codebase and executed it to form and save the embedding. Then exposed it via an MCP server. Tested it separately to confirm it works as expected. (I had worked towards it before but this time I got it to work the way I wanted)
+
+- Then I created an autogen program which answers questions about a codebase by using the above MCP server as a tool. I tried it out initially with a small local model but the responses didn't make much sense. Then I tried with a much larger local LLM and the answers were closer to reality. So based on what I see from Claude code as well as my above program I can reasonably confirm that the agents are still very much dependent on good models and especially large context window. 
+
+- Next week I plan to continue with the above and make the program more perfect and try it out on other repositories. Once I am confident about it then the next phase will be to make changes to support multiple queries at a time. The idea is that eventually when we give an EIP as an input, it gets divided into a series of tasks (e.g. where and how is the sidecar backfilling is implemented in prysm) and then the program needs to execute one task at a time, create the summary, write it to a file and move on. Eventually creating a report. 
